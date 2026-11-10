@@ -28,9 +28,9 @@ class EffectSet(val session: Int, val reverbOnly: Boolean) {
                 loud?.let { l -> safe { l.setTargetGain((gainDb * 100).toInt()); l.enabled = gainDb > 0f } }
             }
             if (bass == null) bass = safe { BassBoost(0, session) }
-            bass?.let { b -> safe { if (b.isStrengthSupported) b.setStrength((p.bass * 10).toShort()); b.enabled = p.bass > 0 } }
+            bass?.let { b -> safe { if (b.strengthSupported) b.setStrength((p.bass * 10).toShort()); b.enabled = p.bass > 0 } }
             if (virt == null) virt = safe { Virtualizer(0, session) }
-            virt?.let { v -> safe { if (v.isStrengthSupported) v.setStrength((p.virt * 10).toShort()); v.enabled = p.virt > 0 } }
+            virt?.let { v -> safe { if (v.strengthSupported) v.setStrength((p.virt * 10).toShort()); v.enabled = p.virt > 0 } }
         }
         return applyReverb(p)
     }

@@ -14,7 +14,7 @@ object Engine {
     /** Ecualizador "hardware" del sistema (normalmente 5 bandas): se usa si no hay DynamicsProcessing. */
     fun eqInfo(): EqInfo = try {
         val e = Equalizer(0, 0)
-        val n = e.numBands.toInt()
+        val n = e.numberOfBands.toInt()
         val r = e.bandLevelRange
         val f = List(n) { e.getCenterFreq(it.toShort()) / 1000 }
         e.release()
